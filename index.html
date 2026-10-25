@@ -209,6 +209,79 @@ input:focus,textarea:focus,select:focus{border-color:var(--red);outline:2px soli
  .faq summary::after{transition:transform .5s cubic-bezier(.12,.8,.2,1)}
  .faq details[open] p{animation:brake .6s cubic-bezier(.12,.8,.2,1)}
 }
+html{scrollbar-color:var(--red) var(--charcoal)}
+@supports selector(::-webkit-scrollbar){
+ html{scrollbar-color:auto}
+ ::-webkit-scrollbar{width:12px}
+ ::-webkit-scrollbar-track{background:var(--charcoal);border-left:1px solid var(--line)}
+ ::-webkit-scrollbar-thumb{background:repeating-linear-gradient(180deg,var(--red) 0 9px,#b3161f 9px 12px);border:2px solid var(--charcoal);border-radius:8px}
+ ::-webkit-scrollbar-thumb:hover{background:var(--red)}
+}
+::selection{background:var(--red);color:#fff}
+.rail{--mk:clamp(1.05rem,1.3vw,1.5rem);--big:clamp(2.8rem,3.6vw,4.2rem);display:none;position:fixed;z-index:4;top:50%;transform:translateY(-50%)}
+.rl{right:calc(50% + 33rem + 1rem);flex-direction:column;align-items:flex-end;gap:clamp(1.4rem,3.5vh,2.4rem)}
+.rl ol{list-style:none;margin:0;padding:0;display:grid;gap:clamp(1.6rem,4.5vh,2.8rem);position:relative}
+.rl ol::before,.rl ol::after{content:"";position:absolute;right:calc(var(--mk)/2 - 1.5px);top:calc(var(--mk)/2);width:3px;background:var(--line)}
+.rl ol::before{bottom:calc(var(--mk)/2)}
+.rl ol::after{background:var(--red);height:calc((100% - var(--mk))*var(--p,0))}
+.rl a{position:relative;display:flex;align-items:center;justify-content:flex-end;gap:.8rem;color:var(--muted);font:italic 700 clamp(1.2rem,1.55vw,1.85rem)/1 var(--display)}
+.rl a::after{content:"";z-index:1;width:var(--mk);height:var(--mk);border:3px solid var(--steel);background:var(--charcoal);transform:rotate(45deg) scale(.8);transition:transform .5s cubic-bezier(.12,.8,.2,1),background .3s,border-color .3s}
+.rl a[aria-current]::after,.rl a:hover::after{background:var(--red);border-color:var(--red);transform:rotate(45deg) scale(1.15)}
+.rl a[aria-current],.rl a:hover{color:var(--white)}
+.rl a span{position:absolute;left:calc(100% + .8rem);padding:.3rem .7rem;background:var(--graphite);border:1px solid var(--line);white-space:nowrap;opacity:0;pointer-events:none}
+.rl a:hover span,.rl a:focus-visible span{opacity:1}
+.bt{display:flex;align-items:center;gap:.8rem}
+.pct{font:italic 800 clamp(1.6rem,2.3vw,2.6rem)/1 var(--display);color:var(--red-text)}
+.pct::after{content:"%";font-size:.55em;margin-left:.08em}
+.up{width:var(--big);height:var(--big);padding:calc(var(--big)*.2);margin-right:calc(var(--mk)/2 - var(--big)/2);border:2px solid var(--red);border-radius:50%;background:var(--charcoal);color:var(--white);cursor:pointer}
+.up:hover{background:var(--red)}
+.up svg,.whl svg{display:block;width:100%;height:100%;transform:rotate(var(--rot,0deg))}
+.rr{left:calc(50% + 33rem + 1rem);height:min(74vh,38rem);flex-direction:column;align-items:center;gap:1.2rem;color:var(--muted)}
+.road{flex:1;width:clamp(1.6rem,2vw,2.4rem);border-inline:3px solid var(--steel);background:var(--graphite) linear-gradient(180deg,var(--red) 0 55%,transparent 55%) 50% calc(var(--sx,0px)*-1)/.4rem 40px repeat-y;transform:skewX(-14deg)}
+.vt{writing-mode:vertical-rl;transform:rotate(180deg);font:italic 800 clamp(1.6rem,2.4vw,2.7rem)/1 var(--display);letter-spacing:.18em;text-transform:uppercase;color:var(--silver)}
+.whl{display:block;width:var(--big);height:var(--big);color:var(--white)}
+@media(min-width:78rem){.wrap{max-width:66rem}}
+@media(min-width:78rem){.rail{display:flex}}
+@media(min-width:88rem){
+ .rl a span{position:static;padding:0;background:none;border:0;opacity:1;font-size:inherit}
+}
+@media(prefers-reduced-motion:no-preference){
+ .rl{animation:brake 1s cubic-bezier(.12,.8,.2,1) .5s both}
+ .rr{animation:brakeR 1s cubic-bezier(.12,.8,.2,1) .5s both}
+ @keyframes brakeR{from{opacity:0;translate:36px 0}to{opacity:1;translate:0 0}}
+}
+/* Suivi de défilement (colonne gauche) : environ 2 fois plus grand */
+.rl{--mk:clamp(2rem,2.1vw,2.9rem);--big:clamp(3.2rem,4.6vw,6.2rem);right:calc(50% + 33rem + 1.6rem);gap:clamp(2rem,5vh,3.4rem)}
+.rl ol{gap:clamp(2rem,6.5vh,4.2rem)}
+.rl ol::before,.rl ol::after{width:5px;right:calc(var(--mk)/2 - 2.5px)}
+.rl a{font-size:clamp(1.7rem,2.5vw,3.4rem);gap:1rem}
+.rl a::after{border-width:5px}
+.rl a span{font-size:1.3rem}
+.rl .bt{gap:1rem}
+.rl .pct{display:none;font-size:clamp(2.6rem,3.6vw,4.6rem)}
+.rl .up{border-width:3px}
+@media(min-width:88rem){
+ .wrap{max-width:62rem}
+ .rl{right:calc(50% + 31rem + 1.6rem)}
+ .rr{left:calc(50% + 31rem + 1rem)}
+ .rl .pct{display:block}
+ .visual{width:23rem;right:1.5rem}
+}
+/* Colonnes latérales : un peu plus petites, plus près des bords de l'écran */
+.rl{--mk:clamp(1.6rem,1.65vw,2.3rem);--big:clamp(2.6rem,3.6vw,4.9rem);gap:clamp(1.6rem,4vh,2.8rem)}
+.rl ol{gap:clamp(1.6rem,5.2vh,3.4rem)}
+.rl ol::before,.rl ol::after{width:4px;right:calc(var(--mk)/2 - 2px)}
+.rl a{font-size:clamp(1.4rem,1.95vw,2.7rem);gap:.8rem}
+.rl a::after{border-width:4px}
+.rl .pct{font-size:clamp(2.1rem,2.8vw,3.6rem)}
+.rl .up{border-width:2px}
+.rr{--big:clamp(2.3rem,2.9vw,3.4rem);height:min(66vh,32rem)}
+.road{width:clamp(1.3rem,1.6vw,1.9rem)}
+.vt{font-size:clamp(1.3rem,1.9vw,2.1rem)}
+@media(min-width:88rem){
+ .rl{right:clamp(calc(50% + 31rem + 1.6rem),calc(50% + 45rem + 1.6rem),calc(100% - 13.5rem))}
+ .rr{left:clamp(calc(50% + 31rem + 1rem),calc(50% + 45rem + 1.6rem),calc(100% - 5.5rem))}
+}
 </style>
 </head>
 <body>
@@ -376,6 +449,18 @@ input:focus,textarea:focus,select:focus{border-color:var(--red);outline:2px soli
 
 </main>
 <footer><div class="wrap"><span>© Pneus Elite Mauricie</span><a href="https://www.facebook.com/profile.php?id=61581512458030" target="_blank" rel="noopener">Facebook</a></div></footer>
+<nav class="rail rl" aria-label="Sections de la page">
+  <ol>
+    <li><a href="#services"><span>Services</span></a></li>
+    <li><a href="#pneus"><span>Pneus</span></a></li>
+    <li><a href="#avis"><span>Avis</span></a></li>
+    <li><a href="#faq"><span>Questions</span></a></li>
+    <li><a href="#contact"><span>Contact</span></a></li>
+    <li><a href="#carte"><span>Adresse</span></a></li>
+  </ol>
+  <div class="bt"><b class="pct" aria-hidden="true">0</b><button class="up" type="button" aria-label="Retour en haut de la page"><svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="7" aria-hidden="true"><circle cx="50" cy="50" r="44"/><circle cx="50" cy="50" r="14" fill="currentColor"/><path d="M50 36V6M50 64v30M36 50H6M64 50h30"/></svg></button></div>
+</nav>
+<div class="rail rr" aria-hidden="true"><span class="road"></span><span class="vt">Pneus Elite</span><i class="whl"><svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="7" aria-hidden="true"><circle cx="50" cy="50" r="44"/><circle cx="50" cy="50" r="14" fill="currentColor"/><path d="M50 36V6M50 64v30M36 50H6M64 50h30"/></svg></i></div>
 <script>
 document.getElementById('f').addEventListener('submit',function(e){e.preventDefault();var d=new FormData(e.target);
 var b='Nom: '+d.get('n')+'\nTéléphone: '+d.get('t')+'\nService: '+d.get('s')+'\n\n'+d.get('m');
@@ -396,9 +481,15 @@ document.querySelectorAll('.svc,.faq details').forEach(function(e,i){e.style.set
 var els=document.querySelectorAll('.sec .wrap>h2,.cgrid>div>h2,.grid3,.svc,.one,.season,.faq details,.mapg,.cgrid form,.info');
 els.forEach(function(e){e.setAttribute('data-r','')});
 if('IntersectionObserver' in window){var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}})},{threshold:.12,rootMargin:'0px 0px -6% 0px'});els.forEach(function(e){io.observe(e)})}else els.forEach(function(e){e.classList.add('in')});
-if(rm)return;
-var t=0;function f(){t=0;var y=scrollY,h=de.scrollHeight-innerHeight;de.style.setProperty('--rot',y*.35+'deg');de.style.setProperty('--sx',(y*.6%40)+'px');de.style.setProperty('--p',h>0?Math.min(1,y/h):0)}
-addEventListener('scroll',function(){if(!t)t=requestAnimationFrame(f)},{passive:true});f();
+var secs=['services','pneus','avis','faq','contact','carte'].map(function(id){return document.getElementById(id)}),lk=document.querySelectorAll('.rl a');
+var pe=document.querySelector('.pct'),t=0;function f(){t=0;var y=scrollY,h=de.scrollHeight-innerHeight,a=-1;
+var p=h>0?Math.min(1,y/h):0;de.style.setProperty('--p',p);if(pe)pe.textContent=Math.round(p*100);
+if(!rm){de.style.setProperty('--rot',y*.35+'deg');de.style.setProperty('--sx',(y*.6%40)+'px')}
+secs.forEach(function(e,k){if(e&&e.getBoundingClientRect().top<innerHeight*.45)a=k});
+if(h>0&&y>=h-4)a=secs.length-1;
+lk.forEach(function(l,k){if(k===a)l.setAttribute('aria-current','location');else l.removeAttribute('aria-current')})}
+addEventListener('scroll',function(){if(!t)t=requestAnimationFrame(f)},{passive:true});addEventListener('resize',f);f();
+var up=document.querySelector('.up');if(up)up.onclick=function(){scrollTo({top:0,behavior:B})};
 })();
 var B=matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth';
 document.querySelectorAll('.grid3').forEach(function(g){
