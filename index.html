@@ -282,6 +282,31 @@ html{scrollbar-color:var(--red) var(--charcoal)}
  .rl{right:clamp(calc(50% + 31rem + 1.6rem),calc(50% + 45rem + 1.6rem),calc(100% - 13.5rem))}
  .rr{left:clamp(calc(50% + 31rem + 1rem),calc(50% + 45rem + 1.6rem),calc(100% - 5.5rem))}
 }
+/* Séparateur : même largeur que le contenu sur grand écran, bouts inclinés comme les bandes de la carte */
+@media(min-width:78rem){
+ .sep{width:calc(100% - 2.5rem);max-width:calc(66rem - 2.5rem);margin-inline:auto;clip-path:polygon(1rem 0,100% 0,calc(100% - 1rem) 100%,0 100%)}
+}
+@media(min-width:88rem){.sep{max-width:calc(62rem - 2.5rem)}}
+/* Premier écran : même gris des deux côtés, il reste seulement le liseré rouge en diagonale */
+@media(min-width:60rem){.hero{background:var(--graphite)}}
+/* Route pleine hauteur : « PNEUS ELITE » roule dessus comme une voiture à deux roues */
+@media(min-width:78rem){
+ .rr{--rw:clamp(3.4rem,4.2vw,5rem);--wd:clamp(2.2rem,2.6vw,3.2rem);display:block;top:5rem;bottom:0;height:auto;width:var(--rw);transform:none}
+ .road{position:absolute;inset:0;width:auto;flex:none;transform:none;border-inline:3px solid var(--steel);background:linear-gradient(180deg,var(--red) 0 55%,transparent 55%) 50% calc(var(--sx,0px)*-1)/.45rem 40px repeat-y,rgba(0,0,0,.4)}
+ .car{position:absolute;left:50%;top:calc(var(--p,0)*100%);transform:translate(-50%,calc(var(--p,0)*-100%));display:flex;flex-direction:column;align-items:center;gap:.35rem;will-change:transform}
+ .car .whl{width:var(--wd);height:var(--wd);flex:none}
+ .car .vt{writing-mode:vertical-rl;transform:none;display:grid;place-items:center;width:var(--wd);padding:1rem 0;border-radius:999px;background:var(--red);color:#fff;font:italic 800 clamp(1.1rem,1.6vw,1.8rem)/1 var(--display);letter-spacing:.16em}
+}
+@media(min-width:88rem){.rr{left:clamp(calc(50% + 31rem + 1rem),calc(50% + 45rem + 1.6rem),calc(100% - var(--rw) - 1rem))}}
+@media(prefers-reduced-motion:reduce){.car{top:50%;transform:translate(-50%,-50%)}}
+/* Voiture de course vue du dessus, avec le nom sur la carrosserie */
+.tr{stroke-dasharray:4 4;stroke-dashoffset:calc(var(--sx,0px)*-1)}
+@media(min-width:78rem){
+ .rr{--rw:clamp(4.4rem,5.2vw,6.2rem);--cw:clamp(3.4rem,4vw,5rem)}
+ .car{gap:0}
+ .car svg{display:block;width:var(--cw);height:auto;filter:drop-shadow(0 8px 10px rgba(0,0,0,.55))}
+}
+@media(min-width:78rem){.rr{--rw:clamp(4.8rem,5.6vw,6.6rem);--cw:clamp(3.8rem,4.4vw,5.6rem)}}
 </style>
 </head>
 <body>
@@ -460,7 +485,65 @@ html{scrollbar-color:var(--red) var(--charcoal)}
   </ol>
   <div class="bt"><b class="pct" aria-hidden="true">0</b><button class="up" type="button" aria-label="Retour en haut de la page"><svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="7" aria-hidden="true"><circle cx="50" cy="50" r="44"/><circle cx="50" cy="50" r="14" fill="currentColor"/><path d="M50 36V6M50 64v30M36 50H6M64 50h30"/></svg></button></div>
 </nav>
-<div class="rail rr" aria-hidden="true"><span class="road"></span><span class="vt">Pneus Elite</span><i class="whl"><svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="7" aria-hidden="true"><circle cx="50" cy="50" r="44"/><circle cx="50" cy="50" r="14" fill="currentColor"/><path d="M50 36V6M50 64v30M36 50H6M64 50h30"/></svg></i></div>
+<div class="rail rr" aria-hidden="true"><span class="road"></span><div class="car"><svg viewBox="0 0 80 212" aria-hidden="true">
+<g stroke="#5a5c60" stroke-width="1.6" fill="none"><path d="M19 48L34 56M19 62L34 64M61 48L46 56M61 62L46 64M20 158L37 150M20 168L37 166M60 158L43 150M60 168L43 166"/></g>
+<g fill="#0f1011" stroke="#a9acb0" stroke-width="1.2"><rect x="2" y="34" width="17" height="40" rx="5"/><rect x="61" y="34" width="17" height="40" rx="5"/><rect x="7" y="148" width="13" height="32" rx="4"/><rect x="60" y="148" width="13" height="32" rx="4"/></g>
+<g fill="#e3202b"><rect x="2.7" y="40" width="2" height="28" rx="1"/><rect x="75.3" y="40" width="2" height="28" rx="1"/><rect x="7.6" y="153" width="1.8" height="22" rx=".9"/><rect x="70.6" y="153" width="1.8" height="22" rx=".9"/></g>
+<!-- Subtle tire sidewall grooves and rubber texture, keeping the original flat style -->
+<g fill="none" stroke-linecap="round">
+ <g stroke="#36383b" stroke-width="0.65">
+  <path d="M5.8 38.5V69.5 M8 38.5V69.5 M74.2 38.5V69.5 M72 38.5V69.5"/>
+  <path d="M9.5 152V176 M11.2 152V176 M70.5 152V176 M68.8 152V176"/>
+ </g>
+ <g stroke="#d7d8da" stroke-width="0.55" opacity=".8">
+  <path d="M3.7 39.5H5.1 M3.7 43H5.1 M3.7 46.5H5.1 M3.7 50H5.1 M3.7 53.5H5.1 M3.7 57H5.1 M3.7 60.5H5.1 M3.7 64H5.1 M3.7 67.5H5.1"/>
+  <path d="M74.9 39.5H76.3 M74.9 43H76.3 M74.9 46.5H76.3 M74.9 50H76.3 M74.9 53.5H76.3 M74.9 57H76.3 M74.9 60.5H76.3 M74.9 64H76.3 M74.9 67.5H76.3"/>
+  <path d="M8.8 154H10 M8.8 158H10 M8.8 162H10 M8.8 166H10 M8.8 170H10 M8.8 174H10 M70 154H71.2 M70 158H71.2 M70 162H71.2 M70 166H71.2 M70 170H71.2 M70 174H71.2"/>
+ </g>
+</g>
+<g stroke="#a9acb0" stroke-width="2" fill="none"><path class="tr" d="M10.5 37V71"/><path class="tr" d="M69.5 37V71"/><path class="tr" d="M13.5 151V177"/><path class="tr" d="M66.5 151V177"/></g>
+<g><rect x="19" y="14.5" width="42" height="2.2" rx="1" fill="#5a5c60"/><rect x="37" y="9" width="6" height="7" fill="#5a5c60"/>
+<rect x="12" y="7.4" width="56" height="6.2" rx="1.2" fill="#a9acb0"/><rect x="14" y="1.8" width="52" height="4.2" rx="1.2" fill="#f4f4f2"/>
+<rect x="9.8" y="0.6" width="4" height="19" rx="1.6" fill="#e3202b"/><rect x="66.2" y="0.6" width="4" height="19" rx="1.6" fill="#e3202b"/></g>
+<g><rect x="16" y="188" width="48" height="3.4" rx="1.2" fill="#f4f4f2"/><rect x="11" y="192.4" width="58" height="3.6" rx="1.2" fill="#a9acb0"/>
+<rect x="6.5" y="197" width="67" height="6.5" rx="1.4" fill="#f4f4f2"/><rect x="6.5" y="203.8" width="67" height="2" rx="1" fill="#e3202b"/>
+<path fill="#e3202b" d="M3.5 186H8.2V209L5.4 210.8Q3.5 209.6 3.5 207Z"/><path fill="#e3202b" d="M76.5 186H71.8V209L74.6 210.8Q76.5 209.6 76.5 207Z"/>
+<g stroke="#a9acb0" stroke-width="0.45" fill="none" opacity=".9"><path d="M5.2 188V205 M74.8 188V205 M8.5 207H71.5"/></g></g>
+<path fill="#e3202b" d="M36 14H44L46.5 60Q52 70 55.5 88L56.5 108Q55 122 48.5 132L45 140Q44 150 43 170L42 198H38L37 170Q36 150 35 140L31.5 132Q25 122 23.5 108L24.5 88Q28 70 33.5 60Z"/>
+<!-- Fine highlights, panel lines and small aerodynamic inlets -->
+<g fill="none" stroke-linecap="round" stroke-linejoin="round">
+ <path d="M37.2 19L34.8 59Q29.4 73 27.3 91L26.5 108Q27 120 32.3 132" stroke="#ff646a" stroke-width="0.8" opacity=".8"/>
+ <path d="M42.8 19L45.2 59Q50.6 73 52.7 91L53.5 108Q53 120 47.7 132" stroke="#8e1119" stroke-width="0.8" opacity=".65"/>
+ <path d="M36.3 25L35.2 46 M43.7 25L44.8 46" stroke="#ff8589" stroke-width="0.55" opacity=".75"/>
+ <path d="M31.2 83Q29.2 94 29.5 105 M48.8 83Q50.8 94 50.5 105" stroke="#7f1118" stroke-width="0.75" opacity=".75"/>
+ <path d="M30.5 119L34 130 M49.5 119L46 130" stroke="#ff555d" stroke-width="0.8"/>
+ <path d="M36.1 144Q35.2 154 36.2 166 M43.9 144Q44.8 154 43.8 166" stroke="#b81520" stroke-width="0.65"/>
+</g>
+<g fill="#8f1119">
+ <path d="M34.3 51.5L35.8 50.5L35.4 55.5L33.9 57Z"/>
+ <path d="M45.7 51.5L44.2 50.5L44.6 55.5L46.1 57Z"/>
+ <path d="M29.1 96L31 94.5L30.7 99.5L28.8 101Z"/>
+ <path d="M50.9 96L49 94.5L49.3 99.5L51.2 101Z"/>
+</g>
+<!-- Front wing flap divisions -->
+<g stroke="#777a7e" stroke-width="0.55" fill="none" opacity=".95">
+ <path d="M15 3.9H65 M13 9.8H67 M20 15.5H33 M47 15.5H60"/>
+ <path d="M11 199.2H69 M9 204.8H71"/>
+</g>
+<g fill="#e3202b">
+ <path d="M18 4.8H30V5.7H18Z M50 4.8H62V5.7H50Z"/>
+ <path d="M13 195.2H25V196.1H13Z M55 195.2H67V196.1H55Z"/>
+</g>
+<g fill="#b3161f"><path d="M47.5 70Q52 78 54 90L55 108Q54.5 113 52.5 117L49 100L47.5 80Z"/><path d="M32.5 70Q28 78 26 90L25 108Q25.5 113 27.5 117L31 100L32.5 80Z"/></g>
+<g fill="#17181a"><path d="M50.5 114Q55 114 55.8 120Q54 126 49 127Z"/><path d="M29.5 114Q25 114 24.2 120Q26 126 31 127Z"/></g>
+<path fill="#f4f4f2" d="M42.4 182H37.6L38 198H42Z"/>
+<ellipse cx="40" cy="134" rx="5.2" ry="9" fill="#17181a"/>
+<circle cx="40" cy="136" r="3.6" fill="#f4f4f2"/><path d="M37.6 134.4Q40 132.8 42.4 134.4V135.6Q40 134.6 37.6 135.6Z" fill="#17181a"/>
+<circle cx="40" cy="136" r="2.65" fill="none" stroke="#c5c7c9" stroke-width="0.35"/>
+<path d="M38.1 136.8Q40 138 41.9 136.8" stroke="#a9acb0" stroke-width="0.35" fill="none"/>
+<path d="M33.5 141Q33 127 40 122Q47 127 46.5 141M40 122V128" stroke="#17181a" stroke-width="1.6" fill="none"/>
+<text transform="translate(37 22) rotate(90)" textLength="80" lengthAdjust="spacingAndGlyphs" font-size="8.5" font-weight="800" font-style="italic" fill="#fff" style="font-family:'Barlow Condensed','Arial Narrow',sans-serif">PNEUS ELITE</text>
+</svg></div></div>
 <script>
 document.getElementById('f').addEventListener('submit',function(e){e.preventDefault();var d=new FormData(e.target);
 var b='Nom: '+d.get('n')+'\nTéléphone: '+d.get('t')+'\nService: '+d.get('s')+'\n\n'+d.get('m');
