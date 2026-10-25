@@ -2,7 +2,9 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8">
+<script>document.documentElement.classList.add("js")</script>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Pneus Elite Mauricie à Trois-Rivières : vente de pneus neufs et usagés, installation et réparation.">
 <title>Pneus Elite Mauricie | Vente, installation et réparation de pneus</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@1,700;1,800&family=Barlow:wght@400;500;600&display=swap">
 <style>
@@ -11,15 +13,14 @@
   color-scheme:dark;
   /* PALETTE FIXE */
   --charcoal:#17181a; --graphite:#212326; --steel:#5a5c60; --silver:#a9acb0; --white:#f4f4f2; --red:#e3202b;
-  --line:#34363a;
+  --line:#34363a; --muted:#8d9096; --red-text:#ff5a5f;
   --display:'Barlow Condensed','Arial Narrow',Impact,sans-serif;
   --body:'Barlow','Helvetica Neue',Arial,sans-serif;
   box-sizing:border-box;
-  padding-top:env(safe-area-inset-top,0px);
   padding-bottom:env(safe-area-inset-bottom,0px);
 }
 *,*::before,*::after{box-sizing:inherit}
-body{margin:0;background:var(--charcoal);color:var(--white);font:400 1rem/1.55 var(--body)}
+body{margin:0;overflow-x:clip;background:var(--charcoal);color:var(--white);font:400 1rem/1.55 var(--body)}
 a{color:inherit;text-decoration:none}
 :focus-visible{outline:3px solid var(--red);outline-offset:3px}
 .wrap{max-width:72rem;margin:0 auto;padding:0 1.25rem}
@@ -32,7 +33,7 @@ header{display:flex;justify-content:space-between;align-items:center;height:3.75
 nav{display:none}
 .tel-sm{display:inline-flex;align-items:center;gap:.4rem;padding:.5rem .85rem;border:1.5px solid var(--red);border-radius:3px;font:600 .9rem var(--body)}
 
-.hero{position:relative;overflow:hidden;padding:1.5rem 0 6rem}
+.hero{position:relative;overflow:hidden;padding:2rem 0 3rem}
 .hero::before{content:"";position:absolute;top:-1rem;right:-30%;width:75%;height:1.1rem;background:var(--red);transform:skewX(-35deg)}
 .hero::after{content:"";position:absolute;top:.6rem;right:-34%;width:60%;height:.6rem;background:var(--steel);transform:skewX(-35deg)}
 .hero .wrap{position:relative;z-index:1;display:grid;gap:2rem}
@@ -61,17 +62,17 @@ h1{margin:0;font:italic 800 clamp(2.1rem,9vw,2.8rem)/1.02 var(--display);text-tr
   .logo{font-size:1.6rem}
   nav{display:flex;gap:2rem;font-weight:500;color:var(--silver)}
   nav a:hover{color:var(--white)}
-  .tel-sm{font-size:1rem;padding:.6rem 1.1rem}
-  .hero{padding:3.5rem 0 0}
+  .tel-sm{font-size:1rem;padding:.6rem 1.1rem;background:var(--red);color:#fff}
+  .hero{padding:3.5rem 0 4rem}
   .hero::before,.hero::after{top:0;bottom:0;right:0;height:auto;transform:none;clip-path:polygon(22% 0,100% 0,100% 100%,0 100%)}
   .hero::before{width:51%;background:var(--red)}
   .hero::after{width:50%;background:var(--graphite)}
   .hero .wrap{grid-template-columns:1fr;gap:0}
-  .text{max-width:34rem;padding-bottom:3.5rem}
+  .text{max-width:34rem}
   .badge{font-size:1.05rem}
   h1{font-size:clamp(3rem,4.6vw,3.9rem)}
   .lead{font-size:1.125rem;max-width:30rem;margin:1.1rem 0 1.5rem}
-  .chips{display:none}
+  .chips{margin-bottom:1.75rem}
   .cta{flex-direction:row;align-items:center}
   .btn{padding:.95rem 1.7rem}
   .visual{position:absolute;top:-.5rem;right:2rem;width:26rem;filter:drop-shadow(0 24px 40px rgba(0,0,0,.55))}
@@ -83,6 +84,7 @@ h1{margin:0;font:italic 800 clamp(2.1rem,9vw,2.8rem)/1.02 var(--display);text-tr
   .callbar{display:none}
 }
 html{scroll-behavior:smooth;scroll-padding-top:4.5rem}
+.sep{height:1rem;border-top:3px solid var(--red);background:repeating-linear-gradient(115deg,var(--charcoal) 0 1rem,var(--red) 1rem 1.7rem,var(--charcoal) 1.7rem 2.2rem,var(--steel) 2.2rem 2.5rem)}
 .sec{padding:2.5rem 0}.sec.alt{background:var(--graphite)}
 .sec h2{margin:0 0 .6rem;font:italic 800 clamp(1.8rem,6vw,2.4rem)/1 var(--display);text-transform:uppercase}
 .sec .sub{margin:0 0 2rem;max-width:34rem;color:var(--silver)}
@@ -93,7 +95,7 @@ html{scroll-behavior:smooth;scroll-padding-top:4.5rem}
 .tile svg{width:42%;color:var(--steel)}
 .tile:nth-child(even) svg{color:var(--red)}
 .tile span{position:absolute;left:0;right:0;bottom:0;padding:.6rem .8rem;background:linear-gradient(transparent,rgba(0,0,0,.75));font-size:.88rem}
-.rating{display:flex;align-items:center;gap:.6rem;margin:0 0 1.2rem;font:italic 800 1.6rem/1 var(--display)}
+.rating{flex-wrap:wrap;display:flex;align-items:center;gap:.6rem;margin:0 0 1.2rem;font:italic 800 1.6rem/1 var(--display)}
 .rating .st{color:var(--red);letter-spacing:.1em;font-size:1.1rem}
 .rating small{font:400 .85rem var(--body);color:var(--silver)}
 .ctl{display:grid;justify-items:center;gap:.5rem;margin-top:.6rem}
@@ -101,7 +103,7 @@ html{scroll-behavior:smooth;scroll-padding-top:4.5rem}
 .ar{width:2.75rem;height:2.75rem;border:1.5px solid var(--red);border-radius:50%;background:transparent;color:var(--white);font:400 1.7rem/1 var(--body);padding:0 0 .2rem;cursor:pointer}
 .ar:disabled{opacity:.3;cursor:default}
 .dots{display:flex;align-items:center;gap:.4rem}
-.dots i{display:block;width:.5rem;height:.5rem;border-radius:999px;background:var(--steel);cursor:pointer;transition:width .2s,background .2s}
+.dots i{position:relative;display:block;width:.5rem;height:.5rem;border-radius:999px;background:var(--steel);cursor:pointer;transition:width .2s,background .2s}
 .dots i.on{width:1.3rem;background:var(--red)}
 .ctl small{color:var(--silver);font-size:.82rem;transition:opacity .3s}
 .ctl small.off{opacity:0}
@@ -110,17 +112,17 @@ html{scroll-behavior:smooth;scroll-padding-top:4.5rem}
 .card h3{margin:0 0 .4rem;font:italic 800 1.4rem/1.1 var(--display);text-transform:uppercase}
 .card p{margin:0;color:var(--silver);font-size:.97rem}
 .card ul{margin:.8rem 0 0;padding-left:1.1rem;color:var(--silver);font-size:.95rem}
-.card .lnk{display:inline-block;margin-top:1rem;color:var(--red);font-weight:600}
+.card .lnk{display:inline-block;margin-top:.6rem;padding:.6rem 0;color:var(--red-text);font-weight:600}
 .season{display:grid;gap:1.2rem;padding:1.6rem;background:var(--red);color:#fff}
 .season h2{margin:0 0 .3rem}.season p{margin:0}
 .season .btn{border-color:#fff;background:var(--white);color:var(--charcoal)}
 .rev q{display:block;margin:.6rem 0;quotes:none;font-size:1rem}
 .rev .st{color:var(--red);letter-spacing:.15em}
-.rev small,.note{color:var(--steel);font-size:.82rem}
+.rev small,.note{color:var(--muted);font-size:.82rem}
 .faq details{border-bottom:1px solid var(--line);padding:1rem 0}
 .faq summary{cursor:pointer;font-weight:600;list-style:none;display:flex;justify-content:space-between;gap:1rem}
 .faq summary::after{content:"+";color:var(--red);font-size:1.4rem;line-height:1}
-.faq details[open] summary::after{content:"−"}
+.faq details[open] summary::after{transform:rotate(135deg)}
 .faq p{margin:.7rem 0 0;color:var(--silver);max-width:42rem}
 .tags{display:flex;flex-wrap:wrap;gap:.5rem;margin:0;padding:0;list-style:none}
 .tags li{padding:.4rem .9rem;border:1px solid var(--line);border-radius:999px;color:var(--silver)}
@@ -134,7 +136,7 @@ html{scroll-behavior:smooth;scroll-padding-top:4.5rem}
 .cgrid{display:grid;gap:2rem}
 .info{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:1rem;overflow-wrap:anywhere}
 .info li:nth-child(2){grid-column:1/-1}
-.info b{display:block;font:italic 800 1.15rem var(--display);text-transform:uppercase;color:var(--red)}
+.info b{display:block;font:italic 700 1.2rem var(--display);color:var(--red-text)}
 .info span{color:var(--silver)}
 form{display:grid;gap:.8rem}
 label{display:grid;gap:.3rem;font-size:.9rem;color:var(--silver)}
@@ -144,9 +146,11 @@ footer{padding:1.5rem 0 6rem;border-top:1px solid var(--line);color:var(--steel)
 footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.5rem}
 @media(min-width:60rem){
   .sec{padding:5rem 0}
+  .sep{height:1.4rem}
   .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;overflow:visible;margin:0;padding:0}
   .grid3>*{flex:none}
   .ctl{display:none}
+  .strip{display:none}
   .season{grid-template-columns:1fr auto;align-items:center;padding:2rem 2.5rem}
   .cgrid{grid-template-columns:1fr 1.1fr;gap:4rem}
   .mapg{grid-template-columns:1.5fr 1fr;align-items:center;gap:3rem}
@@ -154,10 +158,62 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.5rem
   .faq details{max-width:52rem}
   footer{padding-bottom:1.5rem}
 }
+.top{position:sticky;top:0;z-index:6;padding-top:env(safe-area-inset-top,0px);background:rgba(23,24,26,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.skip{position:absolute;left:-999px;top:0}
+.skip:focus{left:1rem;top:1rem;z-index:20;padding:.6rem 1rem;background:var(--red);color:#fff}
+.dots i::after{content:"";position:absolute;inset:-.9rem -.3rem}
+.btn:hover{filter:brightness(1.12)}
+.btn.solid:hover{background:#c91a24;filter:none}
+.btn:active,.ar:active{transform:translateY(1px)}
+.tel-sm:hover{filter:brightness(1.12)}
+.ar:hover:not(:disabled){background:var(--red)}
+input,textarea,select{min-height:2.9rem}
+input:focus,textarea:focus,select:focus{border-color:var(--red);outline:2px solid var(--red);outline-offset:1px}
+@media(min-width:60rem){html{scroll-padding-top:6rem}}
+@media(min-width:60rem) and (max-width:75rem){.visual{width:21rem;right:1rem}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.dots i,.ctl small{transition:none}}
+.svc{position:relative;display:grid;gap:.5rem 2rem;padding:1.5rem 0;border-top:1px solid var(--line)}
+.svc::before{content:"";position:absolute;top:-2px;left:0;width:3.5rem;height:3px;background:var(--red);transform:skewX(-35deg)}
+.svc h3{margin:0;font:italic 800 clamp(1.7rem,6vw,2.5rem)/1 var(--display);text-transform:uppercase}
+.svc p{margin:0;max-width:32rem;color:var(--silver)}
+.one{margin:0;padding-top:1.5rem;border-top:1px solid var(--line);max-width:none;color:var(--white);font-size:1.1rem}
+#pneus .card{border-top:3px solid var(--red)}
+.card{border-top:0}
+.card.rev{padding:.2rem 0 .2rem 1.1rem;background:none;border-left:3px solid var(--red)}
+.rev q{margin:0 0 .8rem;font:italic 700 1.4rem/1.2 var(--display)}
+.rev small{display:block;line-height:1.35}
+.rev small b{color:var(--white);font-weight:600}
+@keyframes spin-in{from{transform:rotate(-320deg)}to{transform:none}}
+.visual svg{transform:rotate(var(--rot,0deg));will-change:transform}
+@media(prefers-reduced-motion:no-preference){.visual{animation:spin-in 1.3s cubic-bezier(.12,.8,.2,1) both}}
+@media(min-width:60rem){.svc{grid-template-columns:22rem 1fr;align-items:baseline;padding:1.8rem 0}}
+.sep{position:relative;overflow:hidden;background:var(--charcoal)}
+.sep::before{content:"";position:absolute;inset:0 -40px;background:repeating-linear-gradient(90deg,var(--charcoal) 0 16px,var(--red) 16px 27px,var(--charcoal) 27px 35px,var(--steel) 35px 40px);transform:translateX(var(--sx,0px)) skewX(-35deg)}
+.top::after{content:"";position:absolute;left:0;bottom:-1px;height:3px;width:calc(var(--p,0)*100%);background:var(--red);transform:skewX(-35deg);transform-origin:left}
+.sec .wrap>h2::after,.cgrid>div>h2::after{content:"";display:block;width:3.5rem;height:3px;margin-top:.55rem;background:var(--red);transform:skewX(-35deg);transform-origin:left}
+.faq summary::after{display:inline-block}
+@keyframes brake{from{opacity:0;translate:-36px 0}to{opacity:1;translate:0 0}}
+@keyframes slide{from{translate:110% 0}to{translate:0 0}}
+@media(prefers-reduced-motion:no-preference){
+ .hero .text>*{animation:brake .9s cubic-bezier(.12,.8,.2,1) both}
+ .hero .text>:nth-child(2){animation-delay:.1s}.hero .text>:nth-child(3){animation-delay:.2s}.hero .text>:nth-child(4){animation-delay:.3s}.hero .text>:nth-child(5){animation-delay:.4s}
+ .hero::before,.hero::after{animation:slide 1.1s cubic-bezier(.12,.8,.2,1) both}.hero::after{animation-delay:.12s}
+ .js [data-r]{opacity:0;transform:translateX(-30px) skewX(-6deg);transition:opacity .5s var(--d,0s),transform .9s cubic-bezier(.12,.8,.2,1) var(--d,0s)}
+ .js [data-r].in{opacity:1;transform:none}
+ .sec .wrap>h2::after,.cgrid>div>h2::after{transition:width .9s cubic-bezier(.12,.8,.2,1) .2s}
+ .js h2[data-r]:not(.in)::after{width:0}
+ .svc::before{transform-origin:left;transition:width .9s cubic-bezier(.12,.8,.2,1) calc(var(--d,0s) + .25s)}
+ .js .svc[data-r]:not(.in)::before{width:0}
+ .tile svg{transition:transform 1.3s cubic-bezier(.12,.8,.2,1) calc(var(--i,0)*.12s)}
+ .js .grid3:not(.in) .tile svg{transform:rotate(-300deg)}
+ .faq summary::after{transition:transform .5s cubic-bezier(.12,.8,.2,1)}
+ .faq details[open] p{animation:brake .6s cubic-bezier(.12,.8,.2,1)}
+}
 </style>
 </head>
 <body>
-<div class="wrap">
+<a class="skip" href="#main">Aller au contenu</a>
+<div class="top"><div class="wrap">
   <header>
     <a class="logo" href="#"><i></i><span>PNEUS <b>ELITE</b></span></a>
     <nav aria-label="Navigation principale">
@@ -169,8 +225,9 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.5rem
     </nav>
     <a class="tel-sm" href="tel:8199968868">819-996-8868</a>
   </header>
-</div>
+</div></div>
 
+<main id="main">
 <section class="hero">
   <div class="wrap">
     <div class="text">
@@ -213,24 +270,14 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.5rem
   </div>
 </section>
 
+<div class="sep" aria-hidden="true"></div>
+
 <section class="sec" id="services"><div class="wrap">
   <h2>Nos services</h2>
-  <p class="sub">Tout pour vos pneus, au même endroit.</p>
-  <div class="grid3">
-    <div class="card"><h3>Vente de pneus</h3><p>Pneus neufs et usagés pour auto, VUS et camionnette, selon votre budget.</p></div>
-    <div class="card"><h3>Installation</h3><p>Pose, équilibrage et changement saisonnier, fait avec soin.</p></div>
-    <div class="card"><h3>Réparation</h3><p>Crevaison ou pneu endommagé : on évalue et on règle rapidement.</p></div>
-  </div>
-</div></section>
-
-<section class="sec alt"><div class="wrap">
-  <h2>Pourquoi nous choisir</h2>
-  <p class="sub">Simple, direct et honnête.</p>
-  <div class="grid3">
-    <div class="card"><h3>Neufs et usagés</h3><p>Un choix pour chaque budget.</p></div>
-    <div class="card"><h3>Service complet</h3><p>Vente, pose et réparation au même endroit.</p></div>
-    <div class="card"><h3>Réponse directe</h3><p>Un seul numéro, une vraie personne au bout du fil.</p></div>
-  </div>
+  <div class="svc"><h3>Vente de pneus</h3><p>Neufs et usagés pour auto, VUS et camionnette, selon votre budget.</p></div>
+  <div class="svc"><h3>Installation</h3><p>Pose, équilibrage et changement saisonnier, fait avec soin.</p></div>
+  <div class="svc"><h3>Réparation</h3><p>Crevaison ou pneu endommagé : on évalue et on règle rapidement.</p></div>
+  <p class="one">Vente, pose et réparation au même endroit. Vous appelez, une vraie personne répond.</p>
 </div></section>
 
 <section class="sec" id="pneus"><div class="wrap">
@@ -245,7 +292,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.5rem
 
 <section class="sec" style="padding-top:0"><div class="wrap">
   <div class="season">
-    <div><h2>Changement saisonnier</h2><p>Hiver ou été, réservez votre place avant la rush.</p></div>
+    <div><h2>Changement saisonnier</h2><p>Réservez votre changement de pneus avant la période de pointe.</p></div>
     <a class="btn" href="#contact">Prendre rendez-vous</a>
   </div>
 </div></section>
@@ -265,7 +312,6 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.5rem
 
 <section class="sec alt faq" id="faq"><div class="wrap">
   <h2>Questions fréquentes</h2>
-  <p class="sub">Les réponses aux questions qu’on entend le plus.</p>
   <details><summary>Quand changer mes pneus?</summary><p>Quand la température reste sous 7 °C, passez aux pneus d’hiver. Au printemps, revenez aux pneus d’été.</p></details>
   <details><summary>Les pneus usagés sont-ils sécuritaires?</summary><p>Oui, s’ils sont bien inspectés. On vérifie l’usure et l’état avant de vous les proposer.</p></details>
   <details><summary>Combien de temps pour une installation?</summary><p>Habituellement moins d’une heure. Appelez pour confirmer selon la période.</p></details>
@@ -294,10 +340,11 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.5rem
   </div>
   <form id="f">
     <label>Nom<input name="n" required autocomplete="name"></label>
-    <label>Téléphone<input name="t" type="tel" required autocomplete="tel"></label>
+    <label>Téléphone<input name="t" type="tel" inputmode="tel" required autocomplete="tel" placeholder="819-000-0000"></label>
     <label>Service<select name="s"><option>Vente de pneus</option><option>Installation</option><option>Réparation</option><option>Changement saisonnier</option></select></label>
-    <label>Message (grandeur du pneu, véhicule)<textarea name="m" rows="4"></textarea></label>
+    <label>Message (grandeur du pneu, véhicule)<textarea name="m" rows="4" placeholder="Ex. : 205/55R16, Honda Civic 2018"></textarea></label>
     <button class="btn solid" type="submit">Envoyer la demande</button>
+    <small class="note">Ce bouton ouvre votre application courriel avec le message prêt à envoyer.</small>
   </form>
 </div></section>
 
@@ -327,6 +374,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.5rem
   </div>
 </div></section>
 
+</main>
 <footer><div class="wrap"><span>© Pneus Elite Mauricie</span><a href="https://www.facebook.com/profile.php?id=61581512458030" target="_blank" rel="noopener">Facebook</a></div></footer>
 <script>
 document.getElementById('f').addEventListener('submit',function(e){e.preventDefault();var d=new FormData(e.target);
@@ -336,11 +384,23 @@ location.href='mailto:pneuselitemauricie@gmail.com?subject='+encodeURIComponent(
 
 <script>
 var R=[['Marc-André T.','Service rapide et prix honnête. Mes pneus d’hiver étaient posés en moins d’une heure.','il y a 2 semaines'],['Sophie L.','Très bon accueil, ils m’ont bien conseillée sur des pneus usagés en bon état.','il y a 1 mois'],['Jean-François B.','Crevaison réparée le jour même. Je recommande sans hésiter.','il y a 2 mois']];
-document.getElementById('rv').innerHTML=R.map(function(r){return '<div class="card rev"><span class="st">★★★★★</span><q>'+r[1]+'</q><small>'+r[0]+' · '+r[2]+'</small></div>'}).join('');
+document.getElementById('rv').innerHTML=R.map(function(r){return '<div class="card rev"><q>'+r[1]+'</q><small><b>'+r[0]+'</b><br>'+r[2]+'</small></div>'}).join('');
 var W='<svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="6" aria-hidden="true"><circle cx="50" cy="50" r="44"/><circle cx="50" cy="50" r="24"/><path d="M50 26V6M50 74v20M26 50H6M74 50h20"/></svg>';
 document.getElementById('gl').innerHTML=['Installation de pneus d’hiver','Équilibrage','Réparation de crevaison','Pneus usagés inspectés','Changement saisonnier','L’atelier'].map(function(c){return '<div class="tile" role="img" aria-label="'+c+'">'+W+'<span>'+c+'</span></div>'}).join('');
 </script>
 <script>
+(function(){
+var rm=matchMedia('(prefers-reduced-motion:reduce)').matches,de=document.documentElement;
+document.querySelectorAll('.tile').forEach(function(t,i){t.style.setProperty('--i',i)});
+document.querySelectorAll('.svc,.faq details').forEach(function(e,i){e.style.setProperty('--d',(i%5)*.09+'s')});
+var els=document.querySelectorAll('.sec .wrap>h2,.cgrid>div>h2,.grid3,.svc,.one,.season,.faq details,.mapg,.cgrid form,.info');
+els.forEach(function(e){e.setAttribute('data-r','')});
+if('IntersectionObserver' in window){var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}})},{threshold:.12,rootMargin:'0px 0px -6% 0px'});els.forEach(function(e){io.observe(e)})}else els.forEach(function(e){e.classList.add('in')});
+if(rm)return;
+var t=0;function f(){t=0;var y=scrollY,h=de.scrollHeight-innerHeight;de.style.setProperty('--rot',y*.35+'deg');de.style.setProperty('--sx',(y*.6%40)+'px');de.style.setProperty('--p',h>0?Math.min(1,y/h):0)}
+addEventListener('scroll',function(){if(!t)t=requestAnimationFrame(f)},{passive:true});f();
+})();
+var B=matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth';
 document.querySelectorAll('.grid3').forEach(function(g){
   var n=g.children.length;if(n<2)return;
   var c=document.createElement('div');c.className='ctl';
@@ -355,14 +415,14 @@ document.querySelectorAll('.grid3').forEach(function(g){
     if(g.scrollLeft>60)h.className='off';
   }
   g.addEventListener('scroll',u,{passive:true});
-  b[0].onclick=function(){g.scrollBy({left:-w(),behavior:'smooth'})};
-  b[1].onclick=function(){g.scrollBy({left:w(),behavior:'smooth'})};
-  d.forEach(function(x,k){x.onclick=function(){g.scrollTo({left:k*w(),behavior:'smooth'})}});
+  b[0].onclick=function(){g.scrollBy({left:-w(),behavior:B})};
+  b[1].onclick=function(){g.scrollBy({left:w(),behavior:B})};
+  d.forEach(function(x,k){x.onclick=function(){g.scrollTo({left:k*w(),behavior:B})}});
   u();
   if(!matchMedia('(prefers-reduced-motion:reduce)').matches&&'IntersectionObserver' in window){
     new IntersectionObserver(function(e,o){
       if(!e[0].isIntersecting)return;o.disconnect();
-      if(g.scrollWidth>g.clientWidth+4){g.scrollTo({left:48,behavior:'smooth'});setTimeout(function(){g.scrollTo({left:0,behavior:'smooth'})},700)}
+      if(g.scrollWidth>g.clientWidth+4){g.scrollTo({left:48,behavior:B});setTimeout(function(){g.scrollTo({left:0,behavior:B})},700)}
     },{threshold:.7}).observe(g);
   }
 });
